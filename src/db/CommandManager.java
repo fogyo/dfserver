@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import server.Server;
+
 
 public class CommandManager {
 	
@@ -33,7 +35,8 @@ public class CommandManager {
 	public void startCommand() {
 		if (commands.containsKey(strCommand)==true) {
 			reply="";
-			String[] adress = commands.get(strCommand).toString().split(" ");		
+			String[] adress = commands.get(strCommand).toString().split(" ");
+			Server.logs.log(strCommand + "arrived to CM");
 			//1 аргумент, pl_id		
 			if(numargs == 1) {
 				try {
@@ -50,19 +53,13 @@ public class CommandManager {
 						reply = reply + getString.invoke(command) + " ";
 					} catch (NoSuchMethodException | SecurityException e) {
 						e.printStackTrace();
+						Server.logs.log("Error while running command with 1 arg, catch with methods");
 					}
 					
 					
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException  e) {
 					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					e.printStackTrace();
+					Server.logs.log("Error while running command with 1 arg, multicatch");
 				}
 			}
 			//2 арга, pl_id, args
@@ -81,19 +78,13 @@ public class CommandManager {
 						reply = reply + getString.invoke(command) + " ";
 					} catch (NoSuchMethodException | SecurityException e) {
 						e.printStackTrace();
+						Server.logs.log("Error while running command with 2 args, catch with methods");
 					}
 					
 					
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException  e) {
 					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					e.printStackTrace();
+					Server.logs.log("Error while running command with 2 args, multicatch");
 				}
 			}
 		}

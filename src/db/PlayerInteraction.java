@@ -10,6 +10,7 @@ public class PlayerInteraction {
 		String[] opp_coords = Server.db.get_local_map(Server.connect, pl_id).split(" ");
 		String[] template_squares = Server.db.get_template_by_pl_id(Server.connect, pl_id).split(",");
 		int map_id = Server.db.get_map_id(Server.connect, pl_id);
+		Server.logs.log("Info for attack got by " + pl_id);
 		int sq = 0;
 		for (int i = 0; i<24; i++) {
 			if (sq == 12){
@@ -20,14 +21,17 @@ public class PlayerInteraction {
 				int id_to_destroy = Server.db.bot_or_player(Server.connect, map_id, square_to_destroy);
 				if (id_to_destroy<0) {
 					Server.db.bot_destruction(Server.connect, id_to_destroy, pl_id);
+					Server.logs.log("Bot destriyed by " + pl_id);
 				}
 				else {
 					if (Server.db.check_success_of_attack(Server.connect, id_to_destroy, pl_id)) {
 						Server.db.pl_destruction(Server.connect, id_to_destroy, pl_id);
+						Server.logs.log("Player "+ id_to_destroy +" was destroyed by " + pl_id);
 					}
 					else {
 						Server.db.unsuccessful_attack(Server.connect, pl_id);
 						success = false;
+						Server.logs.log("Player "+ id_to_destroy +" wasn't destroyed by " + pl_id);
 					}
 				}
 			}

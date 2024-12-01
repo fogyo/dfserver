@@ -18,15 +18,12 @@ import contract.UserTransfer;
 import database.EntryRoom;
 import database.UserInfo;
 import manager.CommandManager;
-import server.Logger;
 
 public class CommandTask extends RecursiveTask<String>{
 	
 	private UserInfo uf;
 	private int usersNum;
-	private Logger logs;
 	private SocketChannel socketChannel;
-	private Request request;
 	
 	public CommandTask(SocketChannel socketChannel, UserInfo uf, int usersNum, Logger logs, Request request) {
 		this.uf = uf;

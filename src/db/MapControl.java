@@ -6,6 +6,7 @@ import addition.Maps;
 import addition.PlayerPosition;
 import commands.GlobalMap;
 import commands.LocalMap;
+import server.Server;
 
 
 public class MapControl {
@@ -21,11 +22,15 @@ public class MapControl {
 	public void run(){
 		if (!Maps.active_maps) {
 			gm.createGlobalMap(pl_id);
+			Server.logs.log("Global map created by " + pl_id);
 			lm.createLocalMap(pl_id);
+			Server.logs.log("Local map created for " + pl_id);
 		}
 		else {
 			gm.add(pl_id);
+			Server.logs.log(pl_id+" added to global map");
 			lm.createLocalMap(pl_id);
+			Server.logs.log("Local map created for " + pl_id);
 		}
 	
 	}

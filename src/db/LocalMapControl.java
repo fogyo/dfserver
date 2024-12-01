@@ -65,6 +65,7 @@ public class LocalMapControl {
 		}
 		res = res.strip();
 		res+=";";
+		Server.logs.log("Got destroyed players coordinate");
 		//2 пункт, вывод координат доступных игроков
 		String coordinates = Server.db.get_coords(Server.connect, pl_id);
 		String[] separ = coordinates.split(";");
@@ -89,6 +90,7 @@ public class LocalMapControl {
 		}
 		res = res.strip();
 		res+=";";
+		Server.logs.log("Got available players coordinate");
 		//3 пункт, вывод координат триггернутых
 		String[] pl_ids = Server.db.get_actual_opps(Server.connect, map_id).split(",");
 		for (int i = 0 ; i < pl_ids.length ; i++) {
@@ -101,6 +103,7 @@ public class LocalMapControl {
 			}
 		}
 		res = res.strip();
+		Server.logs.log("Got triggered players coordinate");
 	}
 	
 	public String getRes() {
