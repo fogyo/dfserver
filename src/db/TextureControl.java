@@ -15,6 +15,7 @@ public class TextureControl {
 	
 	public void run() {
 		res = Server.db.update_player_texture(Server.connect, pl_id, texture);
+		Server.logs.log("texture updated by " + pl_id);
 	}
 	
 	public String getRes() {

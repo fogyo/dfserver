@@ -27,6 +27,7 @@ public class RatingControl {
 		for (int i=0 ; i<prize_arr.length; i++) {
 			leaderboard = leaderboard + leaderboard_places.split(",")[i]+" "+String.valueOf(prize_arr[i])+",";
 		}
+		Server.logs.log("Leaderboard composed by "+pl_id);
 	}
 	
 	public String getRes() {
