@@ -63,5 +63,21 @@ public class DBCreatingUser {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getPlayerID (Connection conn, String telegram_id) {
+		Statement get_pl_id;
+		try{
+			String sql_pl_id = String.format("SELECT pl_id FROM tg_user WHERE telgram_id = '%s", telegram_id);
+			get_pl_id = conn.createStatement();
+			ResultSet rs = get_pl_id.executeQuery(sql_pl_id);
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }
