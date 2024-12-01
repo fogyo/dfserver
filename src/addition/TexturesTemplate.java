@@ -1,4 +1,4 @@
-package addition;
+/*package addition;
 
 import java.util.HashMap;
 
@@ -28,3 +28,4 @@ public class TexturesTemplate {
 	}
 	
 }
+*/

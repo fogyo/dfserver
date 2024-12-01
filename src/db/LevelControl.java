@@ -33,8 +33,10 @@ public class LevelControl {
 			try {
 				increase_lvl = clazz.getDeclaredMethod("increase_lvl");
 				increase_lvl.invoke(clazz.newInstance(), pl_id, 1);
+				Server.logs.log("Lvl up " + skill);
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException e) {
 				e.printStackTrace();
+				Server.logs.log("Multicatch in LvlControl");
 			}
 	}
 	

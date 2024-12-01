@@ -1,4 +1,4 @@
-package addition;
+/*package addition;
 
 public class BotTable {
 	
@@ -10,3 +10,4 @@ public class BotTable {
 	}
 
 }
+*/

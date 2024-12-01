@@ -1,4 +1,4 @@
-package addition;
+/*package addition;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -68,4 +68,4 @@ public class CommandTask extends RecursiveTask<String>{
 	        
         return "Added to thread";
     }
-}
+}*/
