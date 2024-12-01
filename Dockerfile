@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Копируем файл JAR в контейнер
-COPY target/DFGServer-0.0.1-SNAPSHOT.jar /app/DFGServer-0.0.1-SNAPSHOT.jar
+COPY target/dfg.jar /app/dfg.jar
 
 # Указываем команду для запуска сервера
-CMD ["java", "-jar", "/app/DFGServer-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/dfg.jar"]
